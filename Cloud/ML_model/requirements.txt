@@ -1,0 +1,10 @@
+torch
+torchvision
+pillow
+flask
+flask-restful
+requests
+kafka-python
+#opencv-python
+#json
+#jsonpickle

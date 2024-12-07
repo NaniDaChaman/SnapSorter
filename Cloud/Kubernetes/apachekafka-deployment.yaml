@@ -1,0 +1,43 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: apachekafka-service
+spec:
+  type: NodePort
+  selector:
+    app: apachekafka # Could also be broker0-deployment
+  ports:
+    - port: 9092
+      targetPort: 9092
+      nodePort: 30000
+...
+---
+# This is a declarative approach to describe a Kubernetes based
+# deployment of an application.  Since this is YAML, the indentation
+# is very important
+apiVersion: apps/v1
+kind: Deployment         # We are testing the Deployment resource
+metadata:
+  name: apachekafka-deployment  # A name must be given to the deployment in the metadata section
+spec:                     # This is the specification where we can even put the number of replicas
+  selector:
+    matchLabels:
+      app: apachekafka        # if anything crashes before 5 secs, the deployment is not
+                          # considered as ready and available. Default value is 0
+  template:               # Specified info needed to run the pod and what runs in the pod
+    metadata:
+      labels:
+        app: apachekafka        # some label to give to this pod (see the matching label above)
+    spec:                 # actual specification
+      containers:
+      - name: apachekafka      # Used by DNS
+        image: 192.168.1.64:5000/apachekafka   #we have it from docker hub and now well need to upgrade it !
+        command: ["/kafka_2.13-2.8.0/bin/kafka-server-start.sh"]
+        args: ["/kafka_2.13-2.8.0/config/server.properties", "--override", "broker.id=0", "--override", "listeners=PLAINTEXT://:9092", "--override", "advertised.listeners=PLAINTEXT://172.16.2.137:30000", "--override", "listener.security.protocol.map=PLAINTEXT:PLAINTEXT,SSL:SSL,SASL_PLAINTEXT:SASL_PLAINTEXT,SASL_SSL:SASL_SSL", "--override", "zookeeper.connect=172.16.2.137:32404"]
+        #apachezk-svc:2181
+        ports:          
+        - containerPort: 9092
+      nodeSelector:
+        kubernetes.io/hostname: cloud-c2w2
+...

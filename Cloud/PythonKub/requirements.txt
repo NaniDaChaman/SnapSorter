@@ -1,0 +1,6 @@
+flask
+flask-restful
+kubernetes
+requests
+matplotlib
+pandas

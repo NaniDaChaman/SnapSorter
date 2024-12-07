@@ -1,0 +1,5 @@
+numpy
+kafka-python
+requests
+matplotlib
+pillow

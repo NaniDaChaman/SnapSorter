@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload File</title>
+    <script>
+        function get_file(){
+        var fileInput = document.getElementById('fileInput');
+        console.log(fileInput.files)
+        var form_sub =document.getElementById('form_sub');
+        if (fileInput.files.length > 0) {
+            console.log(form_sub.action)
+            form_sub.action=form_sub.action + '?filename='+fileInput.files[0].name;}
+            else 
+            return ""
+        }
+    </script>
+</head>
+<body>
+    <h1>This is our wrapper html webpage to submit file request incase the api is being run locally</h1>
+    <form method = "POST" id ='form_sub' action = "{{ url_for('handle_form')}}">
+        <input type ="file" id ='fileInput' name='image'>
+        <p><input type="submit" value="Submit"></p>
+    </form>
+</body>
+</html>

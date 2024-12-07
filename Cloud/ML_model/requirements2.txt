@@ -1,0 +1,6 @@
+pillow
+requests
+kafka-python
+#opencv-python
+#json
+#jsonpickle
