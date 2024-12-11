@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#cd ..
+cd ..
 cdir=$(pwd)
 echo "Current director is $cdir"
 declare -A images=([192.168.1.64:5000/couchdb]='CouchDB_Docker/Dockerfile.db' 
