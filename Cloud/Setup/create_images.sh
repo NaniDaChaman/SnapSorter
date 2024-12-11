@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-cd ..
-#echo "$pwd"
+#cd ..
+sdir=$(pwd)
+echo "Current director is $cdir"
 declare -A images=([192.168.1.64:5000/couchdb]='CouchDB_Docker/Dockerfile.db' 
 [192.168.1.81:5000/mlmodel]='ML_model/Dockerfile.ml_model'  
 [192.168.1.64:5000/apachekafka]='Kafka_Docker/Kafka/Dockerfile' 
@@ -9,9 +10,19 @@ declare -A images=([192.168.1.64:5000/couchdb]='CouchDB_Docker/Dockerfile.db'
 [192.168.1.64:5000/couchdbconsumer]='CouchDB_Docker/Dockerfile.consumer')
 for image in "${!images[@]}";
 do 
-#echo "$image - ${images[$image]}";
+pattern1="/*"
+pattern2="*/"
+dir=${images[$image]%$pattern1}
+#echo "${images}">$dir
+#echo "${dir}"
+dkfile= ${images[$image]##$pattern2}
+##{images[$image]%$pattern1}
+##{images[$image]##$pattern2}
+#echo "$image - directory : ${dir} image : ${dkfile} ";
 #t1=$[-f ${images[$image]}] 
 #echo $t1;
-docker build -t $image  -f ${images[$image]} .;
-docker push $image;
+cd dir
+docker build -t $image  -f ${dkfile} .;
+cd cdir
+#docker push $image;
 done
