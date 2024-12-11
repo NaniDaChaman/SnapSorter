@@ -12,6 +12,6 @@ do
 #echo "$image - ${images[$image]}";
 #t1=$[-f ${images[$image]}] 
 #echo $t1;
-docker build -t $image  -f ${images[$image]};
+docker build -t $image  -f ${images[$image]} .;
 docker push $image;
 done
