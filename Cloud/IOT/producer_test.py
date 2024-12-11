@@ -52,36 +52,3 @@ for i in range (100):
 # we are done
 producer.close ()
     
-
-consumer = KafkaConsumer (bootstrap_servers="172.16.2.25:30000")
-
-# subscribe to topic
-consumer.subscribe (topics=["utilizations"])
-f=open('consumed.txt','w')
-# we keep reading and printing
-for msg in consumer:
-    # what we get is a record. From this record, we are interested in printing
-    # the contents of the value field. We are sure that we get only the
-    # utilizations topic because that is the only topic we subscribed to.
-    # Otherwise we will need to demultiplex the incoming data according to the
-    # topic coming in.
-    #
-    # convert the value field into string (ASCII)
-    #
-    # Note that I am not showing code to obtain the incoming data as JSON
-    # nor am I showing any code to connect to a backend database sink to
-    # dump the incoming data. You will have to do that for the assignment.
-    message =str(msg.value, 'ascii')
-    print(message)
-    f.write(message+"\n")
-
-# we are done. As such, we are not going to get here as the above loop
-# is a forever loop.
-f.close()
-consumer.close()
-
-
-
-
-
-
