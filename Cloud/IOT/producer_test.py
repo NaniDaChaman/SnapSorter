@@ -25,7 +25,7 @@ from kafka import KafkaConsumer
 # (you will need to change this to your bootstrap server's IP addr)
 producer = KafkaProducer (bootstrap_servers="172.16.2.25:30000", 
                                           acks=1)  # wait for leader to write to log
-
+print('Kafka initialised')
 # say we send the contents 100 times after a sleep of 1 sec in between
 for i in range (100):
     
@@ -45,7 +45,7 @@ for i in range (100):
     #
     producer.send ("utilizations", value=bytes (contents, 'ascii'))
     producer.flush ()   # try to empty the sending buffer
-
+    print('Message sent')
     # sleep a second
     time.sleep (1)
 

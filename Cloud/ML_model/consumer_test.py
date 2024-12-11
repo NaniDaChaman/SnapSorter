@@ -21,10 +21,10 @@ from kafka import KafkaConsumer  # consumer of events
 # acquire the consumer
 # (you will need to change this to your bootstrap server's IP addr)
 consumer = KafkaConsumer (bootstrap_servers="172.16.2.25:30000")
-
+print('Consumer initilised')
 # subscribe to topic
 consumer.subscribe (topics=["utilizations"])
-
+print('topic initilised')
 # we keep reading and printing
 for msg in consumer:
     # what we get is a record. From this record, we are interested in printing
