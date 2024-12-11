@@ -18,12 +18,12 @@ dir=${images[$image]%$pattern1}
 dkfile=${images[$image]#$pattern2}
 ##{images[$image]%$pattern1}
 ##{images[$image]##$pattern2}
-echo "$image - directory : ${dir} image : ${dkfile} ";
+#echo "$image - directory : ${dir} image : ${dkfile} ";
 #t1=$[-f ${images[$image]}] 
 #echo $t1;
-#cd $dir
-#docker build -t $image  -f $dkfile .;
-#docker push $image;
-#cd $cdir
+cd $dir
+docker build -t $image  -f $dkfile .;
+docker push $image;
+cd $cdir
 
 done
