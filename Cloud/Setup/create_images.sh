@@ -21,8 +21,9 @@ dkfile= ${images[$image]##$pattern2}
 #echo "$image - directory : ${dir} image : ${dkfile} ";
 #t1=$[-f ${images[$image]}] 
 #echo $t1;
-cd dir
+cd ${dir}
 docker build -t $image  -f ${dkfile} .;
-cd cdir
-#docker push $image;
+docker push $image;
+cd ${cdir}
+
 done
