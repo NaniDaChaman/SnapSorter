@@ -15,7 +15,7 @@ pattern2="*/"
 dir=${images[$image]%$pattern1}
 #echo "${images}">$dir
 #echo "${dir}"
-dkfile= ${images[$image]##$pattern2}
+dkfile= ${images[$image]#$pattern2}
 ##{images[$image]%$pattern1}
 ##{images[$image]##$pattern2}
 echo "$image - directory : ${dir} image : ${dkfile} ";
