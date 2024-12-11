@@ -14,7 +14,7 @@ spec:
     spec:                 # actual specification
       containers:
       - name: ml       # this is going to be used for DNS name
-        image: 192.168.1.81:5000/mlconsumer  # this is the image in registry accessible
+        image: 192.168.1.64:5000/mlconsumer  # this is the image in registry accessible
                                              # from all our workers
     #     volumeMounts:
     #     - mountPath: .
