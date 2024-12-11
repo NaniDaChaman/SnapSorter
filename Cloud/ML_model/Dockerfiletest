@@ -6,7 +6,7 @@ RUN apt-get install -y python3.8 net-tools wget python3-dev python3-pip
 WORKDIR /app
 
 # Copy the requirements.txt file to the container
-COPY requirements.txt /app/
+COPY requirements_test.txt /app/
 COPY consumer_test.py /app/
 # Install the necessary packages from requirements.txt
 RUN pip install --no-cache-dir -r requirements_test.txt
