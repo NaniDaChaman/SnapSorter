@@ -15,7 +15,7 @@ def scale_up():
     response=json.loads(r.data)
     name=response['name']
     replicas=response['replicas']
-    current_time = datetime.datetime.now().strftime('%H:%M:%S')
+    current_time = datetime.datetime.now().strftime('%S')
     new_row=[replicas,response['response'],response['reward'],current_time]
     df.loc[len(df)]=new_row
     df.to_csv(f'Autoscale_Monitoring_{start_time}')

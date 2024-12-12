@@ -11,6 +11,7 @@ import random
 import threading
 from datetime import datetime
 import matplotlib.pyplot as plt
+import pandas as pd 
 
 # Kafka Producer ID for tracking purposes
 producer_id = 1
@@ -24,6 +25,9 @@ all_messages_received = threading.Event()
 # Number of messages to send
 NUM_MESSAGES = 1000
 
+#saving workload forecasts  
+df=pd.DataFrame(columns=['Time','Time Between Columns'])
+start_time=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 # Initialize Kafka producer
 try:
     producer = KafkaProducer(
@@ -144,9 +148,17 @@ def send_image_to_kafka(image_data, label,i,num):
         }
         image_time={'GroundTruth': label, 'SentTime': datetime.now().isoformat()}
         sent_images[unique_id] = {'GroundTruth': label, 'SentTime': datetime.now()}
-        t1=2*((num*0.5)-i)/num
+        t1=2*((num*0.5)-i)/num+0.5
         #t1=np.random.exponential(scale=3)
+        new_row=[datetime.datetime.now().strftime('%H:%M:%S'),t1]
+        df[len(df)]=new_row
+        df.to_csv(f'Workload_Genrated_{start_time}')
+        fig,ax1=plt.subplots(1,1,sharex=True,figsize=(15,5))
+        ax1.set_title('Workload Generation')
+        ax1.plot(df['Time'],df['Time Between Columns'],color='Red')
+        fig.savefig(f'Workload_Genrated_{start_time}.png')
         time.sleep(t1)
+
         producer.send('iot-topic', value=data)
         producer.flush()
         producer.send('controller',value=image_time)
