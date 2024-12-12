@@ -15,7 +15,7 @@ import controller
 try:
     consumer = KafkaConsumer(
         'controller',
-        bootstrap_servers='172.16.2.137:30000',#could we try and init in
+        bootstrap_servers='172.16.2.25:30000',#could we try and init in
         #dynamically with env vars set by kubernetes
         auto_offset_reset='latest',
         enable_auto_commit=True,
@@ -27,7 +27,7 @@ try:
 except Exception as e : 
     print(f"Error making the Kafka consumer : {e}")
 
-addr='http://172.16.2.45:5010'
+addr='http://172.16.2.203:5010'
 scale_url = addr + '/scale'
 
 def controller_test(forecast_list):
