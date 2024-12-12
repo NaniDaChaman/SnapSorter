@@ -7,7 +7,7 @@ import threading
 # Connect to CouchDB server and create/select the database
 try:#172.16.2.208
     # Connect to CouchDB using the provided credentials and URL
-    couch = couchdb.Server('http://admin:admin@172.16.2.208:30005/')
+    couch = couchdb.Server('http://admin:admin@172.16.2.187:30005/')
     
     # Check if the 'img_db' database exists, if not, create it
     if 'img_db' not in couch:
@@ -23,7 +23,7 @@ except Exception as e:
 try:
     consumer_iot = KafkaConsumer(
         'iot-topic',
-        bootstrap_servers=["172.16.2.137:30000"],  # Kafka broker address
+        bootstrap_servers=["172.16.2.22:30000"],  # Kafka broker address
         value_deserializer=lambda m: json.loads(m.decode('utf-8')),  # Deserialize JSON data from messages
         auto_offset_reset='earliest',  # Start reading from the earliest available message
         enable_auto_commit=True,  # Automatically commit the message offsets
@@ -38,7 +38,7 @@ except Exception as e:
 try:
     consumer_predictions = KafkaConsumer(
         'iot-predictions',
-        bootstrap_servers=["172.16.2.137:30000"],  # Kafka broker address
+        bootstrap_servers=["172.16.2.22:30000"],  # Kafka broker address
         value_deserializer=lambda m: json.loads(m.decode('utf-8')),  # Deserialize JSON data from messages
         auto_offset_reset='earliest',  # Start reading from the earliest available message
         enable_auto_commit=True,  # Automatically commit the message offsets

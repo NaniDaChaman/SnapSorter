@@ -38,6 +38,6 @@ spec:                     # This is the specification where we can even put the 
         ports:            
         - containerPort: 5984
       nodeSelector:
-          kubernetes.io/hostname: cloud-c2w7
+          kubernetes.io/hostname: cloud-c2w7 #172.16.2.187 
 ...
 
