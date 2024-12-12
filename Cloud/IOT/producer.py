@@ -27,7 +27,7 @@ NUM_MESSAGES = 1000
 # Initialize Kafka producer
 try:
     producer = KafkaProducer(
-        bootstrap_servers='172.16.2.137:30000',
+        bootstrap_servers='172.16.2.25:30000',
         value_serializer=lambda v: json.dumps(v).encode('utf-8'),
         acks=1,
         api_version=(0, 10, 1)
@@ -43,7 +43,7 @@ def inference_consumer():
     try:
         consumer = KafkaConsumer(
             'time-topic',
-            bootstrap_servers='172.16.2.137:30000',#could we try and init in
+            bootstrap_servers='172.16.2.25:30000',#could we try and init in
             #dynamically with env vars set by kubernetes
             auto_offset_reset='latest',
             enable_auto_commit=True,

@@ -1,0 +1,87 @@
+   # Put something like this in a file called config
+# inside the .ssh directory, which is in your home directory
+
+# Bastion used as the jump host
+Host bastion
+   User cc
+   Hostname 129.114.25.220
+   Port 22
+   IdentityFile ~/.ssh/F24_CS4287
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+
+# your VM
+Host vm1
+   ProxyJump bastion
+ #  Hostname 192.168.5.96
+   Hostname 172.16.2.203
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/F24_CS4287
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+Host reg2
+   ProxyJump bastion
+ #  Hostname 192.168.5.96
+   Hostname 192.168.1.64
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/F24_CS4287
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+Host reg1 
+   ProxyJump bastion
+ #  Hostname 192.168.5.96
+   Hostname 192.168.1.81
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/F24_CS4287
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+Host vm2
+   ProxyJump bastion
+   Hostname 192.168.5.82
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/cloud2.pem
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+
+Host vm3
+   ProxyJump bastion
+   Hostname 192.168.5.86
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/cloud2.pem
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+
+
+Host vm4
+   ProxyJump bastion
+   Hostname 192.168.5.156
+   User cc
+   Port 22
+   IdentityFile ~/.ssh/cloud2.pem
+   StrictHostKeyChecking no
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+

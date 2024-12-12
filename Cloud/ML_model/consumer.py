@@ -16,7 +16,7 @@ CIFAR10_LABELS = [
 
 consumer = KafkaConsumer(
     'iot-topic',
-    bootstrap_servers="172.16.2.137:30000",  
+    bootstrap_servers="172.16.2.25:30000",  
     value_deserializer=lambda m: json.loads(m.decode('utf-8')),  
     auto_offset_reset='latest',
     enable_auto_commit=True,
@@ -27,7 +27,7 @@ consumer.subscribe (topics=["iot-topic"])
 print("Kafka consumer initialized successfully.")
 
 producer = KafkaProducer(
-    bootstrap_servers="172.16.2.137:30000",  
+    bootstrap_servers="172.16.2.25:30000",  
     value_serializer=lambda v: json.dumps(v).encode('utf-8')  
 )
 
@@ -60,7 +60,7 @@ def infer_image_api(image):
     #they'll need the some kind of shared perminent storage to infer image
     #how will you do that!
     url = f"/api/test"
-    response= requests.post(f"http://172.16.2.184:30004/{url}"#change the ip:host pairing to c2-w3
+    response= requests.post(f"http://172.16.2.22:30004/{url}"#change the ip:host pairing to c2-w3
                             ,json={"image":image})#find a way to infer this
     print("\nImage looks like : \n")
     print(image)
