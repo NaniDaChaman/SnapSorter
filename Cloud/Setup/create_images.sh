@@ -24,6 +24,7 @@ dkfile=${images[$image]#$pattern2}
 cd $dir
 docker build -t $image  -f $dkfile .;
 docker push $image;
+docker rmi $image;
 cd $cdir
 
 done
