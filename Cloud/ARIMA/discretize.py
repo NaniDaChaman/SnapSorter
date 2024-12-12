@@ -58,7 +58,7 @@ for message in consumer:
         
         forecast_list=arima.get_prediction(np.array(arrival_list[-8:]),time_horizon)
         print(f"\nnext 10 forecast is : \n{forecast_list}\n")
-        best_c,best_reward,best_st,best_rt,best_ql=controller.heuristic_single_step_lookahead_search(10,forecast_list,1,14,10,t_delta)
+        best_c,best_reward,best_st,best_rt,best_ql=controller.heuristic_single_step_lookahead_search(10,forecast_list,1,12,10,t_delta)
         #replicas=controller_test(forecast_list)
         print(f"Replicas to be created : {best_c}")
         try :
