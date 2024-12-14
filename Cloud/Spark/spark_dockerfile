@@ -6,7 +6,7 @@
     #RUN . .venv/bin/activate
     RUN pipx install pip
     RUN pipx install pyspark
-    RUN pipx install requests
+    RUN pipx install requests --include-deps
     RUN pipx install numpy
     RUN pipx install cloudant
 # Note, I have added several other packages that provide networking utilities like
