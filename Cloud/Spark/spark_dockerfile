@@ -13,12 +13,12 @@
 RUN apt-get -y update && apt-get install -y net-tools wget dnsutils iputils-ping iputils-tracepath iputils-arping iputils-clockdiff
 # Here we are hardcoding the download mirror and the spark version. I am sure
 # there will be another and better way to do this
-RUN wget https://downloads.apache.org/spark/spark-3.2.0/spark-3.2.0-bin-hadoop3.2.tgz
-RUN zcat spark-3.2.0-bin-hadoop3.2.tgz | tar xpof -
-COPY spark-env.sh /spark-3.2.0-bin-hadoop3.2/conf/
-COPY spark-worker.conf /spark-3.2.0-bin-hadoop3.2/conf/
-COPY spark-driver.conf /spark-3.2.0-bin-hadoop3.2/conf/
+RUN wget https://dlcdn.apache.org/spark/spark-3.5.3/spark-3.5.3-bin-hadoop3.tgz
+RUN zcat spark-3.5.3-bin-hadoop3.tgz | tar xpof -
+COPY spark-env.sh /spark-3.5.3-bin-hadoop3/conf/
+COPY spark-worker.conf /spark-3.5.3-bin-hadoop3/conf/
+COPY spark-driver.conf /spark-3.5.3-bin-hadoop3/conf/
 COPY MapReduce.py /
 # Now we set environment variable that we will need in the container at runtime
-ENV SPARK_HOME=/spark-3.2.0-bin-hadoop3.2
+ENV SPARK_HOME=/spark-3.5.3-bin-hadoop3
 ENV PATH=${PATH}:${SPARK_HOME}/sbin:${SPARK_HOME}/bin
