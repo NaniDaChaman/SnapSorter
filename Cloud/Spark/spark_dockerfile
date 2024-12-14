@@ -1,14 +1,14 @@
     FROM ubuntu:latest
     # Now install the needed packages.
     RUN apt-get -y update && apt-get install -y default-jdk python3
-    RUN apt-get install -y python3-full python3-pip vim git less python3-venv
+    RUN apt-get install -y python3-full python3-pip python3-pipx vim git less python3-venv
     RUN python3 -m venv .venv
     RUN . .venv/bin/activate
-    RUN pip3 install pip
-    RUN pip3 install pyspark
-    RUN pip3 install requests
-    RUN pip3 install numpy
-    RUN pip3 install cloudant
+    RUN pipx install pip
+    RUN pipx install pyspark
+    RUN pipx install requests
+    RUN pipx install numpy
+    RUN pipx install cloudant
 # Note, I have added several other packages that provide networking utilities like
 # ping, nslookup, ifconfig etc.
 RUN apt-get -y update && apt-get install -y net-tools wget dnsutils iputils-ping iputils-tracepath iputils-arping iputils-clockdiff
