@@ -26,7 +26,7 @@ spec:                     # This is the specification
           imagePullPolicy: Always  # This forces the node to pull the image
           env:
             - name: SPARK_LOCAL_IP
-              value: "172.16.2.203" #check what this is ? 
+              value: "172.16.2.203" #check what this is ? #zlt 172.16.2.140
             # the SPARK_HOME env set in docker image is not accessible for the command line
             # below. So had to set it here.
             - name: SPARK_HOME  
