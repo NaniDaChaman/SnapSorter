@@ -31,14 +31,14 @@ spec:                     # This is the specification
 #            - name: SPARK_MASTER_HOST
 #              value: "129.114.25.80"  # floating IP of your spark master machine for outside world
             - name: SPARK_LOCAL_IP
-              value: "129.114.25.15"  # floating IP of your spark master machine for outside world
+              value: "172.16.2.140"  # floating IP of your spark master machine for outside world
             - name: SPARK_NO_DAEMONIZE # so that the master runs in foreground
               value: "1"    
 
             # the SPARK_HOME env set in docker image is not accessible for the command line
             # below. So had to set it here.
             - name: SPARK_HOME  
-              value: "/spark-3.2.0-bin-hadoop3.2"
+              value: "/spark-3.5.3-bin-hadoop3"
 
           command: ["$(SPARK_HOME)/sbin/start-master.sh"]
           args: ["--host", "spark-master-host"]  # provide the floating IP addr of the master VM
