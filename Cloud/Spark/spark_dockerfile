@@ -7,7 +7,7 @@
     RUN pipx install pyspark
     RUN pipx install requests --include-deps
     RUN pipx install numpy
-    RUN pipx install cloudant
+    RUN pipx install cloudant --include-deps
 # Note, I have added several other packages that provide networking utilities like
 # ping, nslookup, ifconfig etc.
 RUN apt-get -y update && apt-get install -y net-tools wget dnsutils iputils-ping iputils-tracepath iputils-arping iputils-clockdiff
