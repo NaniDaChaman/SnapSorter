@@ -30,7 +30,7 @@ spec:                     # This is the specification
             # the SPARK_HOME env set in docker image is not accessible for the command line
             # below. So had to set it here.
             - name: SPARK_HOME  
-              value: "/spark-3.2.0-bin-hadoop3.2"
+              value: "/spark-3.5.3-bin-hadoop3"
 
           ports:            # Spark driver port
             - containerPort: 4040  # the dashboard
