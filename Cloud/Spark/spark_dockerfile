@@ -4,7 +4,6 @@
     RUN apt-get install -y python3-full python3-pip pipx vim git less python3-venv
    # RUN python3 -m venv .venv
     #RUN . .venv/bin/activate
-    RUN pipx install pip
     RUN pipx install pyspark
     RUN pipx install requests --include-deps
     RUN pipx install numpy
