@@ -22,7 +22,7 @@ spec:                     # This is the specification
         kubernetes.io/hostname: cloud-c2w1
       containers:
         - name: spark-master       # used to name container
-          image: 192.168.1.64:5000/my-spark:latest  # this is the image in private registry
+          image: 192.168.1.64:5000/team13/my-spark:latest  # this is the image in private registry
           imagePullPolicy: Always  # This forces the node to pull the image
           ports:            # Spark master port
             - containerPort: 7077  # inside it listens on this port
