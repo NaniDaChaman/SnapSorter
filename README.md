@@ -8,8 +8,9 @@ deployment and management. .
 - Please ask Professor Aniruddha Gokhale for the ssh keys to access the cloud. 
 - Please not that the VM's might be deprovisioned by Professor Aniruddha Gokhale and I'm working on a minikube version of our application.
 - You need to install kubernetes and a private docker registry in your application docker and Python 3.9.x or above
-- Deploying our application : 
- 1. In the Kubernetes folder run : kubectl apply -f apachekafka-deployment.yaml apachezk-deployment.yaml ml_server.yaml mlconsumer-job.yaml producer-job.yaml couchdb-deployment.yaml couchdbconsumer-job.yaml -n team13
-2. In the PythonKub Folder run : pip install -r requirments.txt
-3. In the PythonKub Folder run : python app.py
+- Build All our Images : run create_images.sh
+- Deploy your pods :
+  1. run Cloud/Setup/create_deployments.sh
+  2. run Cloud/Setup/create_jobs.sh
+
 
