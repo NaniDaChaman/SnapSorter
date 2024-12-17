@@ -1,12 +1,7 @@
-# Quenamics_Autoscaler
-Class Project for Hybrid Embedded Systems and Principles of Cloud Computing.
-
-## Running our MATLAB Simulation : 
-- mm5 is our Simulink model
-- Link our model up : 
- 1. arima_forecast component : link it to arima_forecast.m matlab system file
- 2. queue_sim component : link it to queue_sim.m matlab system file
- 3. Run our model 
+# SnapSorter
+A streamlined Kubernetes-based microservice that uses Python-driven
+ML to classify and store images, with Docker and Ansible enhancing
+deployment and management. .
 
 ## Cloud Deployment : 
 - We've deployed our program in chameleon cloud as part of our class project for Principles of Cloud Computing. 
